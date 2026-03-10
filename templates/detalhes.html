@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>Ficha do Personagem</h2>
+
+<div class="ficha-container">
+
+    <!-- COLUNA 1 -->
+    <div class="coluna esquerda">
+
+        <div class="card ficha-basica">
+            <h3>{{ personagem[1] }}</h3>
+            <p><strong>Raça:</strong> {{ personagem[2] }}</p>
+            <p><strong>Classe:</strong> {{ personagem[3] }}</p>
+            <p><strong>Nível:</strong> {{ personagem[4] }}</p>
+        </div>
+
+        <div class="card atributos-card">
+            <h3>Atributos</h3>
+
+            <div class="atributo">FOR <span>{{ personagem[7] }}</span></div>
+            <div class="atributo">DES <span>{{ personagem[8] }}</span></div>
+            <div class="atributo">CON <span>{{ personagem[9] }}</span></div>
+            <div class="atributo">INT <span>{{ personagem[10] }}</span></div>
+            <div class="atributo">SAB <span>{{ personagem[11] }}</span></div>
+            <div class="atributo">CAR <span>{{ personagem[12] }}</span></div>
+        </div>
+
+    </div>
+
+
+    <!-- COLUNA 2 -->
+    <div class="coluna centro">
+
+        <div class="card status-grid">
+            <div>
+                <span>HP</span>
+                <strong>{{ personagem[5] }}</strong>
+            </div>
+
+            <div>
+                <span>CA</span>
+                <strong>{{ personagem[6] }}</strong>
+            </div>
+        </div>
+
+        <div class="card descricao">
+            <h3>Descrição</h3>
+            <p>{{ personagem[13] }}</p>
+        </div>
+
+    </div>
+
+
+    <!-- COLUNA 3 -->
+    <div class="coluna direita">
+
+        <div class="card">
+            <h3>Inventário</h3>
+            <p>{{ personagem[14] }}</p>
+        </div>
+
+        <div class="card">
+            <h3>Habilidades</h3>
+            <p>{{ personagem[15] }}</p>
+        </div>
+
+    </div>
+
+</div>
+
+<br>
+
+<div style="text-align:center;">
+    <a href="/editar/{{ personagem[0] }}" class="btn editar">Editar Ficha</a>
+    <a href="/" class="btn visualizar">Voltar</a>
+</div>
+
+{% endblock %}

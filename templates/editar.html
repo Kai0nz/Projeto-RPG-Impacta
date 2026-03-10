@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Editar Personagem</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <h1>Editar Personagem</h1>
+
+    <form action="/atualizar/{{ personagem[0] }}" method="POST">
+        <input type="text" name="nome" value="{{ personagem[1] }}" required>
+        <input type="text" name="classe" value="{{ personagem[2] }}" required>
+        <input type="number" name="nivel" value="{{ personagem[3] }}" required>
+        <input type="number" name="hp" value="{{ personagem[4] }}" required>
+
+        <button type="submit">Salvar</button>
+    </form>
+
+    <a href="/personagem/{{ personagem[0] }}">Cancelar</a>
+</body>
+</html>

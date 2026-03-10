@@ -1,0 +1,176 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Criar Novo Personagem</h2>
+
+<div class="criacao-container">
+
+    <!-- Abas clicáveis -->
+    <div class="tabs">
+        <div class="tab active" onclick="abrirAba(0)">Atributos</div>
+        <div class="tab" onclick="abrirAba(1)">Raça</div>
+        <div class="tab" onclick="abrirAba(2)">Classe</div>
+        <div class="tab" onclick="abrirAba(3)">Toques Finais</div>
+    </div>
+
+    <form action="/adicionar" method="POST">
+
+        <!-- ================= ETAPA 1 ================= -->
+        <div class="etapa active">
+            <h3>Atributos</h3>
+            <p>
+                No D&D, cada personagem possui seis atributos:
+                Força, Destreza, Constituição,
+                Inteligência, Sabedoria e Carisma.
+            </p>
+            <p>
+                Método padrão: 15, 14, 13, 12, 10, 8
+                ou 4d6 descartando o menor.
+            </p>
+        </div>
+
+        <!-- ================= ETAPA 2 ================= -->
+        <div class="etapa">
+            <h3>Escolha sua Raça</h3>
+
+            <div class="opcoes-grid">
+
+                <div class="opcao-card" onclick="selecionarRaca('Anão', this)">
+                    <h4>Anão</h4>
+                    <p>Resistente e forte, excelente em combate corpo a corpo.</p>
+                </div>
+
+                <div class="opcao-card" onclick="selecionarRaca('Elfo', this)">
+                    <h4>Elfo</h4>
+                    <p>Ágil e perceptivo, ótimo com magia e armas à distância.</p>
+                </div>
+
+                <div class="opcao-card" onclick="selecionarRaca('Humano', this)">
+                    <h4>Humano</h4>
+                    <p>Versátil e adaptável, aprende habilidades rapidamente.</p>
+                </div>
+
+                <div class="opcao-card" onclick="selecionarRaca('Tiefling', this)">
+                    <h4>Tiefling</h4>
+                    <p>Herança infernal, forte afinidade com magia.</p>
+                </div>
+
+            </div>
+
+            <!-- Campo escondido que salva no banco -->
+            <input type="hidden" name="raca" id="racaSelecionada" required>
+        </div>
+
+        <!-- ================= ETAPA 3 ================= -->
+        <div class="etapa">
+            <h3>Classe</h3>
+
+            <select name="classe" required>
+                <option value="">Selecione a Classe</option>
+                <option>Bárbaro</option>
+                <option>Bardo</option>
+                <option>Bruxo</option>
+                <option>Clérigo</option>
+                <option>Druida</option>
+                <option>Feiticeiro</option>
+                <option>Guerreiro</option>
+                <option>Ladino</option>
+                <option>Mago</option>
+                <option>Monge</option>
+                <option>Paladino</option>
+                <option>Patrulheiro</option>
+            </select>
+
+            <h3 style="margin-top:20px;">Origem</h3>
+
+            <select name="origem" required>
+                <option value="">Selecione a Origem</option>
+                <option>Nobre</option>
+                <option>Soldado</option>
+                <option>Criminoso</option>
+                <option>Acólito</option>
+                <option>Ermitão</option>
+                <option>Artista</option>
+            </select>
+        </div>
+
+        <!-- ================= ETAPA 4 ================= -->
+        <div class="etapa">
+            <h3>Toques Finais</h3>
+
+            <input type="text" name="nome" placeholder="Nome do Personagem" required>
+            <input type="text" name="jogador" placeholder="Nome do Jogador">
+
+            <textarea name="aparencia" placeholder="Aparência física"></textarea>
+            <textarea name="personalidade" placeholder="Personalidade, ideais, traços"></textarea>
+            <textarea name="historico" placeholder="Histórico e passado"></textarea>
+            <textarea name="objetivo" placeholder="Objetivo do personagem"></textarea>
+
+            <div style="margin-top:20px;">
+                <button type="submit">Finalizar Personagem</button>
+            </div>
+        </div>
+
+    </form>
+</div>
+
+<!-- ================= SCRIPT ================= -->
+<script>
+
+document.addEventListener("DOMContentLoaded", function() {
+
+    const abas = document.querySelectorAll(".tab");
+    const etapas = document.querySelectorAll(".etapa");
+
+    window.abrirAba = function(index) {
+
+        abas.forEach((aba, i) => {
+            aba.classList.remove("active");
+            etapas[i].classList.remove("active");
+        });
+
+        abas[index].classList.add("active");
+        etapas[index].classList.add("active");
+    }
+
+});
+
+/* ===== Função seleção de Raça ===== */
+function selecionarRaca(valor, elemento) {
+
+    document.querySelectorAll(".opcao-card").forEach(card => {
+        card.classList.remove("ativa");
+    });
+
+    elemento.classList.add("ativa");
+    document.getElementById("racaSelecionada").value = valor;
+}
+
+</script>
+
+<hr>
+
+<h2>Seus Personagens</h2>
+
+<div class="cards-container">
+
+    {% for p in personagens %}
+    <div class="personagem-card">
+
+        <div class="card-top">
+            <h3>{{ p[1] }}</h3>
+            <p class="classe">{{ p[4] }}</p>
+        </div>
+
+        <div class="card-bottom">
+            <a href="/personagem/{{ p[0] }}" class="btn-acessar">
+                Acessar ficha
+            </a>
+        </div>
+
+    </div>
+    {% endfor %}
+
+</div>
+
+{% endblock %}
