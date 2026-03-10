@@ -1,0 +1,12 @@
+# Pastas de ambiente e caches
+venv/
+__pycache__/
+
+# Configurações de segurança
+.env
+
+# Bancos de dados locais
+*.db
+
+# Arquivos do sistema
+.DS_Store
