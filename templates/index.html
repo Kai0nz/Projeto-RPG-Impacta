@@ -96,18 +96,43 @@
 
         <!-- ================= ETAPA 4 ================= -->
         <div class="etapa">
-            <h3>Toques Finais</h3>
+            <div class="secao-toques-finais">
+                <h3>Toques Finais</h3>
+                <p class="descricao-etapa">
+                    Defina os aspectos narrativos do seu personagem. Esses detalhes não possuem efeito em regras, mas deixam o jogo mais imersivo.
+                </p>
 
-            <input type="text" name="nome" placeholder="Nome do Personagem" required>
-            <input type="text" name="jogador" placeholder="Nome do Jogador">
+                <div class="campo-container">
+                    <label>Personagem</label>
+                    <input type="text" name="nome" placeholder="Nome do Personagem" required>
+                </div>
 
-            <textarea name="aparencia" placeholder="Aparência física"></textarea>
-            <textarea name="personalidade" placeholder="Personalidade, ideais, traços"></textarea>
-            <textarea name="historico" placeholder="Histórico e passado"></textarea>
-            <textarea name="objetivo" placeholder="Objetivo do personagem"></textarea>
+                <div class="campo-container">
+                    <label>Jogador</label>
+                    <input type="text" name="jogador" placeholder="Nome do Jogador">
+                </div>
 
-            <div style="margin-top:20px;">
-                <button type="submit">Finalizar Personagem</button>
+                <div class="campo-container">
+                    <label>Aparência</label>
+                    <textarea name="aparencia" placeholder="Nome, gênero, idade, descrição física..."></textarea>
+                </div>
+
+                <div class="campo-container">
+                    <label>Personalidade</label>
+                    <textarea name="personalidade" placeholder="Traços marcantes, opiniões, ideais..."></textarea>
+                </div>
+
+                <div class="campo-container">
+                    <label>Histórico</label>
+                    <textarea name="historico" placeholder="Infância, eventos bons e ruins..."></textarea>
+                </div>
+
+                <div class="campo-container">
+                    <label>Objetivo</label>
+                    <textarea name="objetivo" placeholder="Por que ele luta contra o Outro Lado?"></textarea>
+                </div>
+
+                <button type="submit" class="btn-finalizar">Finalizar Personagem</button>
             </div>
         </div>
 
