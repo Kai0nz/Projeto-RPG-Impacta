@@ -488,3 +488,23 @@ textarea {
     box-shadow: 0 0 25px rgba(140, 30, 255, 0.6);
     transform: scale(1.01);
 }
+
+.btn-excluir{
+    background-color: #b22222;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 6px;
+    text-decoration: none;
+    margin-left: 8px;
+}
+
+.btn-excluir:hover{
+    background-color: #8b0000;
+}
+
+.card-personagem img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+}

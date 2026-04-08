@@ -179,17 +179,25 @@ function selecionarRaca(valor, elemento) {
 
 <div class="cards-container">
 
-    {% for p in personagens %}
+    {% for personagem in personagens %}
     <div class="personagem-card">
 
+        <img src="{{ url_for('static', filename=personagem[19]) }}" class="imagem-personagem">
+
         <div class="card-top">
-            <h3>{{ p[1] }}</h3>
-            <p class="classe">{{ p[4] }}</p>
+            <h3>{{ personagem[1] }}</h3>
+            <p class="classe">{{ personagem[4] }}</p>
         </div>
 
         <div class="card-bottom">
-            <a href="/personagem/{{ p[0] }}" class="btn-acessar">
+            <a href="/personagem/{{ personagem[0] }}" class="btn-acessar">
                 Acessar ficha
+            </a>
+
+            <a href="/deletar/{{ personagem[0] }}"
+                class="btn-excluir"
+                onclick="return confirm('Tem certeza que deseja excluir este personagem?')">
+                Excluir
             </a>
         </div>
 

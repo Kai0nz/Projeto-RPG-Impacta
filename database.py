@@ -37,23 +37,24 @@ def criar_tabela():
             aparencia TEXT,
             personalidade TEXT,
             historico TEXT,
-            objetivo TEXT
+            objetivo TEXT,
+            imagem TEXT
         )
     """)
     conn.commit()
     cursor.close()
     conn.close()
 
-def inserir_personagem(nome, jogador, raca, classe, origem, nivel, hp, forca, destreza, constituicao, inteligencia, sabedoria, carisma, ca, aparencia, personalidade, historico, objetivo):
+def inserir_personagem(nome, jogador, raca, classe, origem, nivel, hp, forca, destreza, constituicao, inteligencia, sabedoria, carisma, ca, aparencia, personalidade, historico, objetivo, imagem):
     conn = conectar()
     cursor = conn.cursor()
     cursor.execute("""
         INSERT INTO personagem (
             nome, jogador, raca, classe, origem, nivel, hp, forca, destreza, constituicao, 
-            inteligencia, sabedoria, carisma, ca, aparencia, personalidade, historico, objetivo
+            inteligencia, sabedoria, carisma, ca, aparencia, personalidade, historico, objetivo, imagem
         )
         VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
-    """, (nome, jogador, raca, classe, origem, nivel, hp, forca, destreza, constituicao, inteligencia, sabedoria, carisma, ca, aparencia, personalidade, historico, objetivo))
+    """, (nome, jogador, raca, classe, origem, nivel, hp, forca, destreza, constituicao, inteligencia, sabedoria, carisma, ca, aparencia, personalidade, historico, objetivo, imagem))
     conn.commit()
     cursor.close()
     conn.close()
