@@ -4,6 +4,20 @@
 
 <h2>Ficha do Personagem</h2>
 
+    <div class="area-topo">
+        <div class="foto-personagem" onclick="selecionarFoto()">
+    {% if personagem[19] %}
+        <img src="{{ personagem[19] }}" alt="foto-personagem" style="width: 100%; border-radius: 10px; cursor: pointer;">
+    {% else %}
+        <img src="{{ url_for('static', filename='img/default.png') }}" alt="foto-personagem" style="width: 100%; border-radius: 10px; cursor: pointer;">
+    {% endif %}
+
+    <form id="form-foto" action="/upload_foto/{{ personagem[0] }}" method="POST" enctype="multipart/form-data">
+        <input type="file" id="input-foto" name="foto" accept="image/*" style="display: none;">
+    </form>
+</div>
+    </div>
+    
 <div class="ficha-container">
 
     <!-- COLUNA 1 -->
@@ -19,12 +33,12 @@
         <div class="card atributos-card">
             <h3>Atributos</h3>
 
-            <div class="atributo">FOR <span>{{ personagem[7] }}</span></div>
-            <div class="atributo">DES <span>{{ personagem[8] }}</span></div>
-            <div class="atributo">CON <span>{{ personagem[9] }}</span></div>
-            <div class="atributo">INT <span>{{ personagem[10] }}</span></div>
-            <div class="atributo">SAB <span>{{ personagem[11] }}</span></div>
-            <div class="atributo">CAR <span>{{ personagem[12] }}</span></div>
+            <div class="atributo">FOR <span>{{ personagem[8] }}</span></div>
+            <div class="atributo">DES <span>{{ personagem[9] }}</span></div>
+            <div class="atributo">CON <span>{{ personagem[10] }}</span></div>
+            <div class="atributo">INT <span>{{ personagem[11] }}</span></div>
+            <div class="atributo">SAB <span>{{ personagem[12] }}</span></div>
+            <div class="atributo">CAR <span>{{ personagem[13] }}</span></div>
         </div>
 
     </div>
@@ -47,7 +61,7 @@
 
         <div class="card descricao">
             <h3>Descrição</h3>
-            <p>{{ personagem[13] }}</p>
+            <p>{{ personagem[15] }}</p>
         </div>
 
     </div>
@@ -58,12 +72,12 @@
 
         <div class="card">
             <h3>Inventário</h3>
-            <p>{{ personagem[14] }}</p>
+            <p>{{ personagem[20] }}</p>
         </div>
 
         <div class="card">
             <h3>Habilidades</h3>
-            <p>{{ personagem[15] }}</p>
+            <p>{{ personagem[21] }}</p>
         </div>
 
     </div>
@@ -76,5 +90,33 @@
     <a href="/editar/{{ personagem[0] }}" class="btn editar">Editar Ficha</a>
     <a href="/" class="btn visualizar">Voltar</a>
 </div>
+
+<script>
+
+function selecionarFoto(){
+    document.getElementById("input-foto").click();
+}
+
+document.getElementById("input-foto").addEventListener("change", function(event){
+
+    const arquivo = event.target.files[0];
+
+    if(arquivo){
+
+        const leitor = new FileReader();
+
+        leitor.onload = function(e){
+            document.getElementById("preview-foto").src = e.target.result;
+        }
+
+        leitor.readAsDataURL(arquivo);
+
+        // ENVIA AUTOMATICAMENTE
+        document.getElementById("form-foto").submit();
+    }
+
+});
+
+</script>
 
 {% endblock %}

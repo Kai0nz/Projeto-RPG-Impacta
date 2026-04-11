@@ -19,26 +19,28 @@ def criar_tabela():
     cursor = conn.cursor()
     cursor.execute("""
         CREATE TABLE IF NOT EXISTS personagem (
-            id SERIAL PRIMARY KEY,
-            nome TEXT NOT NULL,
-            jogador TEXT,
-            raca TEXT NOT NULL,
-            classe TEXT NOT NULL,
-            origem TEXT NOT NULL,
-            nivel INTEGER NOT NULL,
-            hp INTEGER NOT NULL,
-            forca INTEGER,
-            destreza INTEGER,
-            constituicao INTEGER,
-            inteligencia INTEGER,
-            sabedoria INTEGER,
-            carisma INTEGER,
-            ca INTEGER,
-            aparencia TEXT,
-            personalidade TEXT,
-            historico TEXT,
-            objetivo TEXT,
-            imagem TEXT
+            id SERIAL PRIMARY KEY,        -- 0
+            nome TEXT NOT NULL,          -- 1
+            jogador TEXT,                -- 2
+            raca TEXT NOT NULL,          -- 3
+            classe TEXT NOT NULL,        -- 4
+            origem TEXT NOT NULL,        -- 5
+            nivel INTEGER NOT NULL,      -- 6
+            hp INTEGER NOT NULL,         -- 7
+            forca INTEGER,               -- 8
+            destreza INTEGER,            -- 9
+            constituicao INTEGER,        -- 10
+            inteligencia INTEGER,        -- 11
+            sabedoria INTEGER,           -- 12
+            carisma INTEGER,             -- 13
+            ca INTEGER,                  -- 14
+            aparencia TEXT,              -- 15
+            personalidade TEXT,          -- 16
+            historico TEXT,              -- 17
+            objetivo TEXT,               -- 18
+            imagem TEXT,                 -- 19
+            inventario TEXT,             -- 20
+            habilidades TEXT             -- 21
         )
     """)
     conn.commit()
@@ -53,7 +55,7 @@ def inserir_personagem(nome, jogador, raca, classe, origem, nivel, hp, forca, de
             nome, jogador, raca, classe, origem, nivel, hp, forca, destreza, constituicao, 
             inteligencia, sabedoria, carisma, ca, aparencia, personalidade, historico, objetivo, imagem
         )
-        VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+        VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s,%s)
     """, (nome, jogador, raca, classe, origem, nivel, hp, forca, destreza, constituicao, inteligencia, sabedoria, carisma, ca, aparencia, personalidade, historico, objetivo, imagem))
     conn.commit()
     cursor.close()

@@ -178,11 +178,17 @@ function selecionarRaca(valor, elemento) {
 <h2>Seus Personagens</h2>
 
 <div class="cards-container">
-
+    
     {% for personagem in personagens %}
     <div class="personagem-card">
-
-        <img src="{{ url_for('static', filename=personagem[19]) }}" class="imagem-personagem">
+        
+        <div class="card-foto-container">
+            {% if personagem[19] %}
+                <img src="{{ personagem[19] }}" class="imagem-personagem">
+            {% else %}
+                <img src="{{ url_for('static', filename='img/default.png') }}" class="imagem-personagem">
+            {% endif %}
+        </div>
 
         <div class="card-top">
             <h3>{{ personagem[1] }}</h3>
@@ -194,14 +200,15 @@ function selecionarRaca(valor, elemento) {
                 Acessar ficha
             </a>
 
-            <a href="/deletar/{{ personagem[0] }}"
-                class="btn-excluir"
-                onclick="return confirm('Tem certeza que deseja excluir este personagem?')">
+            <a href="/deletar/{{ personagem[0] }}" 
+               class="btn-excluir" 
+               onclick="return confirm('Tem certeza que deseja excluir este personagem?')">
                 Excluir
             </a>
         </div>
 
     </div>
+
     {% endfor %}
 
 </div>

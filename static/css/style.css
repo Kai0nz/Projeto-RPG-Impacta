@@ -508,3 +508,69 @@ textarea {
     object-fit: cover;
     border-radius: 10px;
 }
+
+.foto-personagem-card {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.foto-personagem {
+    width: 180px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.area-topo {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 20px;
+}
+
+.foto-personagem {
+    width: 180px;
+    height: 180px;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 2px solid #2a2a2a;
+    cursor: pointer;
+}
+
+.foto-personagem img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+/* Container da imagem dentro do Card */
+.card-foto-container {
+    width: 100%;
+    height: 150px; /* Altura fixa para manter o padrão dos cards */
+    overflow: hidden;
+    border-radius: 8px 8px 0 0; /* Arredonda só em cima */
+    background-color: #111;
+    margin-bottom: 10px;
+}
+
+.imagem-personagem {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Faz a foto preencher o espaço sem achatar */
+    object-position: center; /* Centraliza a foto caso ela seja cortada */
+    display: block;
+}
+
+/* Ajuste do Card para Ordem Paranormal */
+.personagem-card {
+    background-color: #1a1a1a;
+    border: 1px solid #333;
+    border-radius: 10px;
+    padding: 10px;
+    transition: all 0.3s ease;
+}
+
+.personagem-card:hover {
+    border-color: #8c1eff;
+    box-shadow: 0 0 15px rgba(140, 30, 255, 0.2);
+}
