@@ -580,3 +580,14 @@ textarea {
     cursor: text;
     border-radius: 4px;
 }
+
+.editavel:hover {
+    outline: 1px dashed #8c1eff;
+    cursor: text;
+    background-color: rgba(140, 30, 255, 0.05);
+}
+
+.editavel:focus {
+    outline: 2px solid #8c1eff;
+    background-color: rgba(140, 30, 255, 0.1);
+}

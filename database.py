@@ -2,11 +2,9 @@ import os
 import psycopg2
 from dotenv import load_dotenv
 
-# Carrega as variáveis do arquivo .env
 load_dotenv()
 
 def conectar():
-    # Conecta ao PostgreSQL usando credenciais escondidas no .env
     return psycopg2.connect(
         host=os.getenv("DB_HOST"),
         database=os.getenv("DB_NAME"),
@@ -20,9 +18,9 @@ def criar_tabela():
     cursor.execute("""
         CREATE TABLE IF NOT EXISTS personagem (
             id SERIAL PRIMARY KEY,        -- 0
-            nome TEXT NOT NULL,          -- 1
+            nome TEXT NOT NULL,           -- 1
             jogador TEXT,                -- 2
-            raca TEXT NOT NULL,          -- 3
+            raca TEXT NOT NULL,           -- 3
             classe TEXT NOT NULL,        -- 4
             origem TEXT NOT NULL,        -- 5
             nivel INTEGER NOT NULL,      -- 6
@@ -47,15 +45,16 @@ def criar_tabela():
     cursor.close()
     conn.close()
 
+# Adicionei inventario e habilidades aqui para evitar erros de coluna
 def inserir_personagem(nome, jogador, raca, classe, origem, nivel, hp, forca, destreza, constituicao, inteligencia, sabedoria, carisma, ca, aparencia, personalidade, historico, objetivo, imagem):
     conn = conectar()
     cursor = conn.cursor()
     cursor.execute("""
         INSERT INTO personagem (
             nome, jogador, raca, classe, origem, nivel, hp, forca, destreza, constituicao, 
-            inteligencia, sabedoria, carisma, ca, aparencia, personalidade, historico, objetivo, imagem
+            inteligencia, sabedoria, carisma, ca, aparencia, personalidade, historico, objetivo, imagem, inventario, habilidades
         )
-        VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s,%s)
+        VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, '', '')
     """, (nome, jogador, raca, classe, origem, nivel, hp, forca, destreza, constituicao, inteligencia, sabedoria, carisma, ca, aparencia, personalidade, historico, objetivo, imagem))
     conn.commit()
     cursor.close()
@@ -64,7 +63,7 @@ def inserir_personagem(nome, jogador, raca, classe, origem, nivel, hp, forca, de
 def listar_personagens():
     conn = conectar()
     cursor = conn.cursor()
-    cursor.execute("SELECT * FROM personagem")
+    cursor.execute("SELECT * FROM personagem ORDER BY id DESC") # Order para os novos aparecerem primeiro
     personagens = cursor.fetchall()
     conn.close()
     return personagens
@@ -77,14 +76,17 @@ def buscar_personagem(id):
     conn.close()
     return personagem
 
-def atualizar_personagem(id, nome, classe, nivel, hp):
+# Esta função agora é completa, caso você precise salvar um formulário inteiro no futuro
+def atualizar_personagem(id, nome, classe, nivel, hp, forca, destreza, constituicao, inteligencia, sabedoria, carisma, ca, aparencia, personalidade, historico, objetivo, inventario, habilidades):
     conn = conectar()
     cursor = conn.cursor()
     cursor.execute("""
         UPDATE personagem
-        SET nome = %s, classe = %s, nivel = %s, hp = %s
+        SET nome = %s, classe = %s, nivel = %s, hp = %s, forca = %s, destreza = %s, 
+            constituicao = %s, inteligencia = %s, sabedoria = %s, carisma = %s, ca = %s,
+            aparencia = %s, personalidade = %s, historico = %s, objetivo = %s, inventario = %s, habilidades = %s
         WHERE id = %s
-    """, (nome, classe, nivel, hp, id))
+    """, (nome, classe, nivel, hp, forca, destreza, constituicao, inteligencia, sabedoria, carisma, ca, aparencia, personalidade, historico, objetivo, inventario, habilidades, id))
     conn.commit()
     cursor.close()
     conn.close()
