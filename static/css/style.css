@@ -574,3 +574,9 @@ textarea {
     border-color: #8c1eff;
     box-shadow: 0 0 15px rgba(140, 30, 255, 0.2);
 }
+
+.editavel:hover {
+    background: rgba(140, 30, 255, 0.1);
+    cursor: text;
+    border-radius: 4px;
+}

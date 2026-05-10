@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect
 import os
+from flask import jsonify
 from werkzeug.utils import secure_filename
 from database import criar_tabela, inserir_personagem, listar_personagens
 from database import buscar_personagem
@@ -113,3 +114,36 @@ def deletar(id):
 
 if __name__ == "__main__":
     app.run(debug=True)
+
+@app.route("/editar_campo", methods=["POST"])
+def editar_campo():
+    dados = request.get_json()
+    id_personagem = dados["id"]
+    campo = dados["campo"]
+    valor = dados["valor"]
+
+    # Lista de campos permitidos para evitar que alterem o que não devem
+    campos_permitidos = [
+        "nome", "jogador", "raca", "classe", "origem", "nivel", "hp",
+        "forca", "destreza", "constituicao", "inteligencia", "sabedoria", "carisma",
+        "ca", "aparencia", "personalidade", "historico", "objetivo", "inventario", "habilidades"
+    ]
+
+    if campo not in campos_permitidos:
+        return jsonify({"status": "erro", "message": "Campo inválido"}), 400
+
+    conn = conectar()
+    cursor = conn.cursor()
+
+    try:
+        # Agora o SQL é montado de forma segura
+        query = f"UPDATE personagem SET {campo} = %s WHERE id = %s"
+        cursor.execute(query, (valor, id_personagem))
+        conn.commit()
+        return jsonify({"status": "ok"})
+    except Exception as e:
+        print(f"Erro ao salvar: {e}")
+        return jsonify({"status": "erro"}), 500
+    finally:
+        cursor.close()
+        conn.close()

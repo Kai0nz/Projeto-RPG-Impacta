@@ -25,23 +25,100 @@
 
         <div class="card ficha-basica">
             <h3>Informações Gerais</h3>
-            <p><strong>Nome:</strong> {{ personagem[1] }}</p>
-            <p><strong>Nível:</strong> {{ personagem[6] }}</p>
-            <p><strong>Jogador:</strong> {{ personagem[2] }}</p>
-            <p><strong>Raça:</strong> {{ personagem[3] }}</p>
-            <p><strong>Classe:</strong> {{ personagem[4] }}</p>
-            <p><strong>Origem:</strong> {{ personagem[5] }}</p>
+            <p><strong>Nome:</strong>
+                <span contenteditable="true" class="editavel" 
+                data-campo="nome" 
+                data-id="{{ personagem[0] }}">
+                {{ personagem[1] }}
+            </span></p>
+
+            <p><strong>Nível:</strong>
+                <span contenteditable="true" class="editavel" 
+                data-campo="nivel" 
+                data-id="{{ personagem[0] }}">
+                {{ personagem[6] }}
+            </span></p>
+
+            <p><strong>Jogador:</strong>
+                <span contenteditable="true" class="editavel" 
+                data-campo="jogador" 
+                data-id="{{ personagem[0] }}">
+                {{ personagem[2] }}
+            </span></p>
+
+            <p><strong>Raça:</strong>
+                <span contenteditable="true" class="editavel" 
+                data-campo="raca" 
+                data-id="{{ personagem[0] }}">
+                {{ personagem[3] }}
+            </span></p>
+
+            <p><strong>Classe:</strong>
+                <span contenteditable="true" class="editavel" 
+                data-campo="classe" 
+                data-id="{{ personagem[0] }}">
+                {{ personagem[4] }}
+            </span></p>
+
+            <p><strong>Origem:</strong>
+                <span contenteditable="true" class="editavel" 
+                data-campo="origem" 
+                data-id="{{ personagem[0] }}">
+                {{ personagem[5] }}
+            </span></p>
         </div>
 
         <div class="card atributos-card">
             <h3>Atributos</h3>
 
-            <div class="atributo">FOR <span>{{ personagem[8] }}</span></div>
-            <div class="atributo">DES <span>{{ personagem[9] }}</span></div>
-            <div class="atributo">CON <span>{{ personagem[10] }}</span></div>
-            <div class="atributo">INT <span>{{ personagem[11] }}</span></div>
-            <div class="atributo">SAB <span>{{ personagem[12] }}</span></div>
-            <div class="atributo">CAR <span>{{ personagem[13] }}</span></div>
+            <div class="atributo">
+                FOR: 
+                <span contenteditable="true" class="editavel" 
+                 data-campo="forca" 
+                 data-id="{{ personagem[0] }}">
+                 {{ personagem[8] }}
+            </span></div>
+
+            <div class="atributo">
+                DES: 
+                <span contenteditable="true" class="editavel" 
+                 data-campo="destreza" 
+                 data-id="{{ personagem[0] }}">
+                {{ personagem[9] }}
+            </span></div>
+
+            <div class="atributo">
+                CON: 
+                <span contenteditable="true" class="editavel" 
+                 data-campo="constituição" 
+                 data-id="{{ personagem[0] }}">
+                {{ personagem[10] }}
+            </span></div>
+
+            <div class="atributo">
+                INT: 
+                <span contenteditable="true" class="editavel" 
+                 data-campo="inteligência" 
+                 data-id="{{ personagem[0] }}">
+                {{ personagem[11] }}
+            </span></div>
+
+            <div class="atributo">
+                SAB: 
+                <span contenteditable="true" class="editavel" 
+                 data-campo="forca" 
+                 data-id="{{ personagem[0] }}">
+                 {{ personagem[12] }}
+             </span></div>
+
+            <div class="atributo">
+                CAR: 
+                <span contenteditable="true" class="editavel" 
+                 data-campo="forca" 
+                 data-id="{{ personagem[0] }}">
+                 {{ personagem[13] }}
+            </span></div>
+
         </div>
 
     </div>
@@ -76,7 +153,13 @@
 
         <div class="card">
             <h3>Inventário</h3>
-            <p>{{ personagem[20] }}</p>
+
+            <p contenteditable="true" class="editavel" 
+                data-campo="inventario" 
+                data-id="{{ personagem[0] }}">
+                {{ personagem[20] if personagem[20] else 'Vazio...' }}
+            </p>
+
         </div>
 
         <div class="card">
@@ -97,6 +180,7 @@
 
 <script>
 
+// script da foto
 function selecionarFoto(){
     document.getElementById("input-foto").click();
 }
@@ -119,6 +203,47 @@ document.getElementById("input-foto").addEventListener("change", function(event)
         document.getElementById("form-foto").submit();
     }
 
+});
+
+</script>
+
+<script>
+
+// script da edição
+document.querySelectorAll(".editavel").forEach(campo => {
+    campo.addEventListener("blur", function() {
+        const id = this.dataset.id;
+        const campo_nome = this.dataset.campo;
+        let valor = this.innerText.trim(); // Pega o texto e remove espaços extras
+
+        // Feedback visual simples: pisca em roxo ao salvar
+        this.style.color = "#8c1eff";
+
+        fetch("/editar_campo", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                id: id,
+                campo: campo_nome,
+                valor: valor
+            })
+        }).then(response => {
+            if (response.ok) {
+                // Volta ao branco quando salva
+                setTimeout(() => { this.style.color = "white"; }, 500);
+            }
+        });
+    });
+
+    // Evita que o usuário dê "Enter" em campos que devem ser linha única (como nome ou atributos)
+    campo.addEventListener("keydown", function(e) {
+        if (e.key === "Enter" && !this.dataset.campo.includes("historico") && !this.dataset.campo.includes("inventario")) {
+            e.preventDefault();
+            this.blur(); // Salva ao apertar Enter
+        }
+    });
 });
 
 </script>
