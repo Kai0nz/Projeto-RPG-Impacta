@@ -208,31 +208,35 @@ textarea {
     color: #42a5f5;
 }
 
-/* ===== ATRIBUTOS ===== */
+/* ========================================= */
+/* ========= ATRIBUTOS DA FICHA ============ */
+/* ========================================= */
 
-.atributos-grid {
+.atributos-ficha-grid {
     display: flex;
     flex-direction: column;
     gap: 10px;
     margin-top: 15px;
 }
 
-.atributo {
+.atributo-ficha {
     display: flex;
     justify-content: space-between;
     align-items: center;
+
     background: #1f1f1f;
     padding: 10px 14px;
     border-radius: 8px;
+
     font-size: 14px;
     transition: 0.2s ease;
 }
 
-.atributo:hover {
+.atributo-ficha:hover {
     background: #262626;
 }
 
-.atributo span {
+.atributo-ficha span {
     font-weight: bold;
 }
 
@@ -416,7 +420,7 @@ textarea {
     background: #22143a;
 }
 
-/* --- ORGANIZAÇÃO DOS CAMPOS (ESTILO ORDEM) --- */
+/* --- ORGANIZAÇÃO DOS CAMPOS --- */
 
 .secao-toques-finais {
     text-align: left;
@@ -433,15 +437,15 @@ textarea {
 
 .campo-container {
     display: flex;
-    flex-direction: column; /* Coloca o título EM CIMA da caixa */
-    margin-bottom: 20px;    /* Espaço entre um bloco e outro */
+    flex-direction: column;
+    margin-bottom: 20px;
 }
 
 .campo-container label {
     font-size: 1rem;
     font-weight: bold;
     color: #f0f0f0;
-    margin-bottom: 8px;     /* Espaço entre título e input */
+    margin-bottom: 8px;
     text-transform: uppercase;
     letter-spacing: 1px;
 }
@@ -454,11 +458,10 @@ textarea {
     color: white;
     padding: 12px;
     width: 100%;
-    box-sizing: border-box; /* Garante que o preenchimento não aumente a largura */
+    box-sizing: border-box;
     font-family: inherit;
 }
 
-/* Efeito de foco (brilho roxo) */
 .campo-container input:focus, 
 .campo-container textarea:focus {
     outline: none;
@@ -467,13 +470,14 @@ textarea {
 }
 
 /* --- BOTÃO FINALIZAR --- */
+
 .btn-finalizar {
-    background-color: #8c1eff; /* Roxo vibrante */
+    background-color: #8c1eff;
     color: white;
     border: none;
     border-radius: 4px;
     padding: 15px 0;
-    width: 100%;               /* Botão largo ocupando a linha toda */
+    width: 100%;
     font-size: 1.1rem;
     font-weight: bold;
     text-transform: uppercase;
@@ -501,6 +505,8 @@ textarea {
 .btn-excluir:hover{
     background-color: #8b0000;
 }
+
+/* ===== IMAGENS ===== */
 
 .card-personagem img {
     width: 100%;
@@ -542,13 +548,11 @@ textarea {
     object-fit: cover;
 }
 
-
-/* Container da imagem dentro do Card */
 .card-foto-container {
     width: 100%;
-    height: 150px; /* Altura fixa para manter o padrão dos cards */
+    height: 150px;
     overflow: hidden;
-    border-radius: 8px 8px 0 0; /* Arredonda só em cima */
+    border-radius: 8px 8px 0 0;
     background-color: #111;
     margin-bottom: 10px;
 }
@@ -556,12 +560,11 @@ textarea {
 .imagem-personagem {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Faz a foto preencher o espaço sem achatar */
-    object-position: center; /* Centraliza a foto caso ela seja cortada */
+    object-fit: cover;
+    object-position: center;
     display: block;
 }
 
-/* Ajuste do Card para Ordem Paranormal */
 .personagem-card {
     background-color: #1a1a1a;
     border: 1px solid #333;
@@ -575,11 +578,7 @@ textarea {
     box-shadow: 0 0 15px rgba(140, 30, 255, 0.2);
 }
 
-.editavel:hover {
-    background: rgba(140, 30, 255, 0.1);
-    cursor: text;
-    border-radius: 4px;
-}
+/* ===== CAMPOS EDITÁVEIS ===== */
 
 .editavel:hover {
     outline: 1px dashed #8c1eff;
@@ -590,4 +589,38 @@ textarea {
 .editavel:focus {
     outline: 2px solid #8c1eff;
     background-color: rgba(140, 30, 255, 0.1);
+}
+
+/* ========================================= */
+/* ===== ATRIBUTOS DA CRIAÇÃO PERSONAGEM ==== */
+/* ========================================= */
+
+.atributos-criacao-grid {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    gap: 12px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.atributo-criacao {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    background: #1f1f1f;
+    padding: 10px 14px;
+    border-radius: 8px;
+
+    width: 140px;
+}
+
+.atributo-criacao label {
+    font-weight: bold;
+    min-width: 40px;
+}
+
+.atributo-criacao input {
+    width: 55px;
+    text-align: center;
 }

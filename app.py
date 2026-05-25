@@ -25,6 +25,13 @@ def adicionar():
     classe = request.form["classe"]
     origem = request.form["origem"]
 
+    forca = request.form["forca"]
+    destreza = request.form["destreza"]
+    constituicao = request.form["constituicao"]
+    inteligencia = request.form["inteligencia"]
+    sabedoria = request.form["sabedoria"]
+    carisma = request.form["carisma"]
+
     aparencia = request.form.get("aparencia", "")
     personalidade = request.form.get("personalidade", "")
     historico = request.form.get("historico", "")
@@ -33,8 +40,11 @@ def adicionar():
     inserir_personagem(
         nome, jogador, raca, classe, origem,
         1, 10,  # nível e HP padrão
-        10, 10, 10, 10, 10, 10,  # atributos padrão
+
+        forca, destreza, constituicao, inteligencia, sabedoria, carisma,  # atributos padrão
+
         10,  # CA padrão
+        
         aparencia, personalidade, historico, objetivo,
         ""  # imagem vazia inicial
     )
