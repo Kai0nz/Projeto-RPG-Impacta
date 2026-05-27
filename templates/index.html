@@ -15,81 +15,170 @@
 
     <form action="/adicionar" method="POST">
 
-        <!-- ================= ETAPA 1 ================= -->
+                <!-- ================= ETAPA 1 ================= -->
         <div class="etapa active">
-            <h3>Atributos</h3>
-            <p>
-                No D&D, cada personagem possui seis atributos:
-                Força, Destreza, Constituição,
-                Inteligência, Sabedoria e Carisma.
-            </p>
-            <p>
-                Método padrão: 15, 14, 13, 12, 10, 8
-                ou 4d6 descartando o menor.
-            </p>
 
-            <div class="atributo-criacao">
-                <label>FOR: </label>
-                <input type="number" name="forca" value="15" min="0" max="20">
-            </div>
+            <div class="criacao-layout">
 
-            <div class="atributo-criacao">
-                <label>DES: </label>
-                <input type="number" name="destreza" value="14" min="0" max="20">
-            </div>
+                <!-- ATRIBUTOS -->
+                <div class="atributos-box">
 
-            <div class="atributo-criacao">
-                <label>CON: </label>
-                <input type="number" name="constituicao" value="13" min="0" max="20">
-            </div>
+                    <h3>Atributos</h3>
 
-            <div class="atributo-criacao">
-                <label>INT: </label>
-                <input type="number" name="inteligencia" value="12" min="0" max="20">
-            </div>
+                    <p>
+                        No D&D, cada personagem possui seis atributos:
+                        Força, Destreza, Constituição, Inteligência,
+                        Sabedoria e Carisma.
+                    </p>
 
-            <div class="atributo-criacao">
-                <label>SAB: </label>
-                <input type="number" name="sabedoria" value="10" min="0" max="20">
-            </div>
+                    <p>
+                        Método padrão: 15, 14, 13, 12, 10, 8
+                        ou 4d6 descartando o menor.
+                    </p>
 
-            <div class="atributo-criacao">
-                <label>CAR: </Label>
-                <input type="number" name="carisma" value="8" min="0" max="20">
-            </div>
+                    <div class="atributos-criacao-grid">
 
-        </div>
+                        <div class="atributo-criacao">
+                            <label>FOR:</label>
+                            <input type="number" name="forca" value="15">
+                        </div>
+
+                        <div class="atributo-criacao">
+                            <label>DES:</label>
+                            <input type="number" name="destreza" value="14">
+                        </div>
+
+                        <div class="atributo-criacao">
+                            <label>CON:</label>
+                            <input type="number" name="constituicao" value="13">
+                        </div>
+
+                        <div class="atributo-criacao">
+                            <label>INT:</label>
+                            <input type="number" name="inteligencia" value="12">
+                        </div>
+
+                        <div class="atributo-criacao">
+                            <label>SAB:</label>
+                            <input type="number" name="sabedoria" value="10">
+                        </div>
+
+                        <div class="atributo-criacao">
+                            <label>CAR:</label>
+                            <input type="number" name="carisma" value="8">
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- PAINEL DE DADOS -->
+                <div class="dados-box">
+
+                    <h3>Rolagem de Dados</h3>
+
+                    <button type="button" id="rolar-dados-btn">
+                        Rolar 4D6
+                    </button>
+
+                    <div class="resultado-dados">
+
+                        <p>Dados:</p>
+
+                        <div id="dados-individuais">
+                            -
+                        </div>
+
+                        <p>Total:</p>
+
+                        <div id="resultado-total">
+                            -
+                        </div>
+
+                    </div>
+
+                    <div class="historico-box">
+
+                        <h4>Histórico</h4>
+
+                        <ul id="historico-rolagens">
+
+                        </ul>
+
+                    </div>
+
+                </div>
+
+            </div> <!-- FECHA criacao-layout -->
+
+        </div> <!-- FECHA etapa -->
 
         <!-- ================= ETAPA 2 ================= -->
         <div class="etapa">
+
             <h3>Escolha sua Raça</h3>
 
             <div class="opcoes-grid">
 
                 <div class="opcao-card" onclick="selecionarRaca('Anão', this)">
                     <h4>Anão</h4>
-                    <p>Resistente e forte, excelente em combate corpo a corpo.</p>
+                    <p>Resistentes e disciplinados, são mestres da sobrevivência e da guerra.</p>
+                    <p>+2 Constituição e +1 Sabedoria</p>
+                </div>
+
+                <div class="opcao-card" onclick="selecionarRaca('Draconato', this)">
+                    <h4>Draconato</h4>
+                    <p>Guerreiros orgulhosos com sangue dracônico correndo nas veias.</p>
+                    <p>+2 Força e +1 Carisma</p>
                 </div>
 
                 <div class="opcao-card" onclick="selecionarRaca('Elfo', this)">
                     <h4>Elfo</h4>
-                    <p>Ágil e perceptivo, ótimo com magia e armas à distância.</p>
+                    <p>Graciosos e perceptivos, possuem forte ligação com magia e natureza.</p>
+                    <p>+2 Destreza e +1 Inteligência</p>
+                </div>
+
+                <div class="opcao-card" onclick="selecionarRaca('Gnomo', this)">
+                    <h4>Gnomo</h4>
+                    <p>Curiosos e inteligentes, dominam ilusões e invenções.</p>
+                    <p>+2 Inteligência e +1 Destreza</p>
+                </div>
+
+                <div class="opcao-card" onclick="selecionarRaca('Halfling', this)">
+                    <h4>Halfling</h4>
+                    <p>Pequenos e ágeis, sobrevivem graças à sorte e esperteza.</p>
+                    <p>+2 Destreza e +1 Carisma</p>
                 </div>
 
                 <div class="opcao-card" onclick="selecionarRaca('Humano', this)">
                     <h4>Humano</h4>
-                    <p>Versátil e adaptável, aprende habilidades rapidamente.</p>
+                    <p>Adaptáveis e ambiciosos, humanos se destacam pela versatilidade.</p>
+                    <p>Todos os atributos +1</p>
+                </div>
+
+                <div class="opcao-card" onclick="selecionarRaca('Meio-Elfo', this)">
+                    <h4>Meio-Elfo</h4>
+                    <p>Equilibram o carisma humano com a percepção élfica.</p>
+                    <p>+2 em Carisma e Mais dois atributos que aumentam +1 à sua escolha</p>
+                </div>
+
+                <div class="opcao-card" onclick="selecionarRaca('Meio-Orc', this)">
+                    <h4>Meio-Orc</h4>
+                    <p>Brutais e determinados, transformam força em intimidação.</p>
+                    <p>+2 em Força e +1 em Constituição</p>
                 </div>
 
                 <div class="opcao-card" onclick="selecionarRaca('Tiefling', this)">
                     <h4>Tiefling</h4>
-                    <p>Herança infernal, forte afinidade com magia.</p>
+                    <p>Marcados por um herança infernal, carregam grande afinidade arcana.</p>
+                    <p>+2 em Carisma e +1 em Inteligência</p>
                 </div>
 
             </div>
 
             <!-- Campo escondido que salva no banco -->
             <input type="hidden" name="raca" id="racaSelecionada" required>
+
         </div>
 
         <!-- ================= ETAPA 3 ================= -->
@@ -201,6 +290,47 @@ function selecionarRaca(valor, elemento) {
     elemento.classList.add("ativa");
     document.getElementById("racaSelecionada").value = valor;
 }
+
+</script>
+
+<script>
+
+const botaoRolar = document.getElementById("rolar-dados-btn")
+
+const dadosIndividuais = document.getElementById("dados-individuais")
+
+const resultadoTotal = document.getElementById("resultado-total")
+
+const historico = document.getElementById("historico-rolagens")
+
+botaoRolar.addEventListener("click", () => {
+
+    let dados = []
+
+    for (let i = 0; i < 4; i++) {
+
+        dados.push(
+            Math.floor(Math.random() * 6) + 1
+        )
+    }
+
+    let dadosOrdenados = [...dados].sort((a, b) => a - b)
+
+    dadosOrdenados.shift()
+
+    let total = dadosOrdenados.reduce((a, b) => a + b, 0)
+
+    dadosIndividuais.innerText = dados.join(" - ")
+
+    resultadoTotal.innerText = total
+
+    let itemHistorico = document.createElement("li")
+
+    itemHistorico.innerText = total
+
+    historico.prepend(itemHistorico)
+
+})
 
 </script>
 
