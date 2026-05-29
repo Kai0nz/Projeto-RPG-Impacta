@@ -8,9 +8,10 @@
     <!-- Abas clicáveis -->
     <div class="tabs">
         <div class="tab active" onclick="abrirAba(0)">Atributos</div>
-        <div class="tab" onclick="abrirAba(1)">Raça</div>
-        <div class="tab" onclick="abrirAba(2)">Classe</div>
-        <div class="tab" onclick="abrirAba(3)">Toques Finais</div>
+        <div class="tab" onclick="abrirAba(1)">Raças</div>
+        <div class="tab" onclick="abrirAba(2)">Classes</div>
+        <div class="tab" onclick="abrirAba(3)">Origens</div>
+        <div class="tab" onclick="abrirAba(4)">Toques Finais</div>
     </div>
 
     <form action="/adicionar" method="POST">
@@ -120,34 +121,82 @@
 
             <div class="opcoes-grid">
 
+                <div class="opcao-card" onclick="selecionarRaca('Aarakocra', this)">
+                    <h4>Aarakocra</h4>
+                    <p>Povos pássaros rápidos e livres, mestres dos céus.</p>
+                    <p>+2 em Destreza e +1 em Sabedoria</p>
+                </div>
+
+                <div class="opcao-card" onclick="selecionarRaca('Aasimar', this)">
+                    <h4>Aasimar</h4>
+                    <p>Descendentes celestiais com poderes divinos e presença inspiradora.</p>
+                    <p>+2 em Carisma e +1 em Sabedoria</p>
+                </div>
+
                 <div class="opcao-card" onclick="selecionarRaca('Anão', this)">
                     <h4>Anão</h4>
                     <p>Resistentes e disciplinados, são mestres da sobrevivência e da guerra.</p>
-                    <p>+2 Constituição e +1 Sabedoria</p>
+                    <p>+2 em Constituição e +1 em Sabedoria</p>
+                </div>
+
+                <div class="opcao-card" onclick="selecionarRaca('Bugbear', this)">
+                    <h4>Bugbear</h4>
+                    <p>Predadores brutais especializados em ataques furtivos.</p>
+                    <p>+2 em Força e +1 em Destreza</p>
+                </div>
+
+                <div class="opcao-card" onclick="selecionarRaca('Centauro', this)">
+                    <h4>Centauro</h4>
+                    <p>Povos velozes das planícies com corpo metade cavalo.</p>
+                    <p>+2 em Força e +1 em Sabedoria</p>
+                </div>
+
+                <div class="opcao-card" onclick="selecionarRaca('Changeling', this)">
+                    <h4>Changeling</h4>
+                    <p>Mestres da mudança de aparência e identidade.</p>
+                    <p>+2 em Carisma e Mais um atributo à sua escolha que aumenta em +1</p>
+                </div>
+
+                 <div class="opcao-card" onclick="selecionarRaca('Dhampir', this)">
+                    <h4>Dhampir</h4>
+                    <p>Descendentes ou portadores de uma herança vampírica, combinam traços mortais e sobrenaturais em uma existência entre dois mundos.</p>
+                    <p>+2 em Constituição, +1 em Força e +1 em Destreza</p>
                 </div>
 
                 <div class="opcao-card" onclick="selecionarRaca('Draconato', this)">
                     <h4>Draconato</h4>
                     <p>Guerreiros orgulhosos com sangue dracônico correndo nas veias.</p>
-                    <p>+2 Força e +1 Carisma</p>
+                    <p>+2 em Força e +1 em Carisma</p>
                 </div>
 
                 <div class="opcao-card" onclick="selecionarRaca('Elfo', this)">
                     <h4>Elfo</h4>
                     <p>Graciosos e perceptivos, possuem forte ligação com magia e natureza.</p>
-                    <p>+2 Destreza e +1 Inteligência</p>
+                    <p>+2 em Destreza e +1 em Inteligência</p>
                 </div>
 
                 <div class="opcao-card" onclick="selecionarRaca('Gnomo', this)">
                     <h4>Gnomo</h4>
                     <p>Curiosos e inteligentes, dominam ilusões e invenções.</p>
-                    <p>+2 Inteligência e +1 Destreza</p>
+                    <p>+2 em Inteligência e +1 em Destreza</p>
+                </div>
+
+                 <div class="opcao-card" onclick="selecionarRaca('Goliath', this)">
+                    <h4>Goliath</h4>
+                    <p>Guerreiros gigantes das montanhas, conhecidos por força e resistência.</p>
+                    <p>+2 em Força e +1 em Constituição</p>
                 </div>
 
                 <div class="opcao-card" onclick="selecionarRaca('Halfling', this)">
                     <h4>Halfling</h4>
                     <p>Pequenos e ágeis, sobrevivem graças à sorte e esperteza.</p>
-                    <p>+2 Destreza e +1 Carisma</p>
+                    <p>+2 em Destreza e +1 em Carisma</p>
+                </div>
+
+                <div class="opcao-card" onclick="selecionarRaca('Homem-Lagarto', this)">
+                    <h4>Homem-Lagarto</h4>
+                    <p>Reptilianos adaptados à sobrevivência em ambientes hostis.</p>
+                    <p>+2 em Constituição e +1 em Sabedoria</p>
                 </div>
 
                 <div class="opcao-card" onclick="selecionarRaca('Humano', this)">
@@ -159,19 +208,37 @@
                 <div class="opcao-card" onclick="selecionarRaca('Meio-Elfo', this)">
                     <h4>Meio-Elfo</h4>
                     <p>Equilibram o carisma humano com a percepção élfica.</p>
-                    <p>+2 em Carisma e Mais dois atributos que aumentam +1 à sua escolha</p>
+                    <p>+2 em Carisma e Mais dois atributos que aumentam em +1 à sua escolha</p>
                 </div>
 
                 <div class="opcao-card" onclick="selecionarRaca('Meio-Orc', this)">
                     <h4>Meio-Orc</h4>
-                    <p>Brutais e determinados, transformam força em intimidação.</p>
-                    <p>+2 em Força e +1 em Constituição</p>
+                    <p>Descendentes de humanos e orcs, unem força física e grande capacidade de adaptação.</p>
+                    <p>+2 em Força, +1 em Constituição e Mais um atributo à sua escolha que aumenta em +1</p>
+                </div>
+
+                <div class="opcao-card" onclick="selecionarRaca('Orc', this)">
+                    <h4>Orc</h4>
+                    <p>Guerreiros brutais e determinados, transformam força em intimidação.</p>
+                    <p>+2 em Força e +2 em Constituição</p>
                 </div>
 
                 <div class="opcao-card" onclick="selecionarRaca('Tiefling', this)">
                     <h4>Tiefling</h4>
                     <p>Marcados por um herança infernal, carregam grande afinidade arcana.</p>
                     <p>+2 em Carisma e +1 em Inteligência</p>
+                </div>
+
+                <div class="opcao-card" onclick="selecionarRaca('Tritão', this)">
+                    <h4>Tritão</h4>
+                    <p>Guardiões oceânicos ligados às profudezas do mar.</p>
+                    <p>+1 em Constituição, +1 em Força e +1 em Carisma</p>
+                </div>
+
+                <div class="opcao-card" onclick="selecionarRaca('Warforged', this)">
+                    <h4>Warforged</h4>
+                    <p>Constructos vivos criados originalmente para a guerra.</p>
+                    <p>+2 em Constituição e Mais dois atributos que aumentam em +2 à sua escolha</p>
                 </div>
 
             </div>
@@ -183,38 +250,188 @@
 
         <!-- ================= ETAPA 3 ================= -->
         <div class="etapa">
-            <h3>Classe</h3>
 
-            <select name="classe" required>
-                <option value="">Selecione a Classe</option>
-                <option>Bárbaro</option>
-                <option>Bardo</option>
-                <option>Bruxo</option>
-                <option>Clérigo</option>
-                <option>Druida</option>
-                <option>Feiticeiro</option>
-                <option>Guerreiro</option>
-                <option>Ladino</option>
-                <option>Mago</option>
-                <option>Monge</option>
-                <option>Paladino</option>
-                <option>Patrulheiro</option>
-            </select>
+            <h3>Escolha sua Classe</h3>
 
-            <h3 style="margin-top:20px;">Origem</h3>
+            <div class="opcoes-grid">
 
-            <select name="origem" required>
-                <option value="">Selecione a Origem</option>
-                <option>Nobre</option>
-                <option>Soldado</option>
-                <option>Criminoso</option>
-                <option>Acólito</option>
-                <option>Ermitão</option>
-                <option>Artista</option>
-            </select>
+                <div class="opcao-card-classe" onclick="selecionarClasse('Artífice', this)">
+                    <h4>Artífice</h4>
+                    <p>Mestres da invenção, os artífices usam engenhosidade e magia para desbloquear habilidades extraordinárias nos objetos.</p>
+                    <p>Dado de Vida: d8</p>
+                </div>
+
+                <div class="opcao-card-classe" onclick="selecionarClasse('Bárbaro', this)">
+                    <h4>Bárbaro</h4>
+                    <p>Um feroz guerreiro de origem primitiva que pode entrar em fúria durante uma batalha.</p>
+                    <p>Dado de Vida: d12</p>
+                </div>
+
+                <div class="opcao-card-classe" onclick="selecionarClasse('Bardo', this)">
+                    <h4>Bardo</h4>
+                    <p>Um místico inspirador que possui poderes que ecoam a música da criação.</p>
+                    <p>Dado de Vida: d8</p>
+                </div>
+
+                <div class="opcao-card-classe" onclick="selecionarClasse('Bruxo', this)">
+                    <h4>Bruxo</h4>
+                    <p>Um portador de magia derivada de barganha com uma entidade planar.</p>
+                    <p>Dado de Vida: d8</p>
+                </div>
+
+                <div class="opcao-card-classe" onclick="selecionarClasse('Caçador de Sangue', this)">
+                    <h4>Caçador de Sangue</h4>
+                    <p>Dispostos a sofrer o que for preciso para alcançar a vitória, esses guerreiros habilidosos se forjaram em uma força poderosa dedicada a proteger os inocentes.</p>
+                    <p>Dado de Vida: d10</p>
+                </div>
+
+                <div class="opcao-card-classe" onclick="selecionarClasse('Clérigo', this)">
+                    <h4>Clérigo</h4>
+                    <p>Um campeão sacerdotal que empunha magia divina a serviço de um poder maior.</p>
+                    <p>Dado de Vida: d8</p>
+                </div>
+
+                <div class="opcao-card-classe" onclick="selecionarClasse('Druida', this)">
+                    <h4>Druida</h4>
+                    <p>Um sacerdote da Crença Antiga, detentor dos poderes da natureza luz da lua, crescimento das plantas, fogo, relâmpagos e capaz de adotar formas animais.</p>
+                    <p>Dado de Vida: d8</p>
+                </div>
+
+                <div class="opcao-card-classe" onclick="selecionarClasse('Feiticeiro', this)">
+                    <h4>Feiticeiro</h4>
+                    <p>Um conjurador que possui magia latente advinda de um dom ou linhagem.</p>
+                    <p>Dado de Vida: d6</p>
+                </div>
+
+                <div class="opcao-card-classe" onclick="selecionarClasse('Guerreiro', this)">
+                    <h4>Guerreiro</h4>
+                    <p>Um mestre do combate, perito em uma vasta gama de armas e armaduras.</p>
+                    <p>Dado de Vida: d10</p>
+                </div>
+
+                <div class="opcao-card-classe" onclick="selecionarClasse('Ladino', this)">
+                    <h4>Ladino</h4>
+                    <p>Um trapaceiro que utiliza de furtividade e astúcia para sobrepujar os obstáculos e inimigos.</p>
+                    <p>Dado de Vida: d8</p>
+                </div>
+
+                <div class="opcao-card-classe" onclick="selecionarClasse('Mago', this)">
+                    <h4>Mago</h4>
+                    <p>Um usuário de magia escolado, capaz de manipular as estruturas da realidade.</p>
+                    <p>Dado de Vida: d6</p>
+                </div>
+
+                <div class="opcao-card-classe" onclick="selecionarClasse('Monge', this)">
+                    <h4>Monge</h4>
+                    <p>Um mestre das artes marciais, utilizando o poder corporal para atingir a perfeição física e espiritual.</p>
+                    <p>Dado de Vida: d8</p>
+                </div>
+
+                <div class="opcao-card-classe" onclick="selecionarClasse('Paladino', this)">
+                    <h4>Paladino</h4>
+                    <p>Um guerreiro divino vinculado a um juramento sagrado.</p>
+                    <p>Dado de Vida: d10</p>
+                </div>
+
+                <div class="opcao-card-classe" onclick="selecionarClasse('Patrulheiro', this)">
+                    <h4>Patrulheiro</h4>
+                    <p>Um guerreiro que utiliza de poderio marcial e magia natural para combater ameaças nos limites da civilização.</p>
+                    <p>Dado de Vida: d10</p>
+                </div>
+
+                <div class="opcao-card-classe" onclick="selecionarClasse('Pistoleiro', this)">
+                    <h4>Pistoleiro</h4>
+                    <p>Famosos por sobreviverem com inteligência e depender de um timing de fração de segundo e uma considerável dose de sorte.</p>
+                    <p>Dado de Vida: d8</p>
+                </div>
+
+            </div>
+
+            <!-- Campo escondido que salva no banco -->
+            <input type="hidden" name="classe" id="classeSelecionada" required>
+
         </div>
 
-        <!-- ================= ETAPA 4 ================= -->
+ <!-- ================= ETAPA 4 ================= -->
+        <div class="etapa">
+
+            <h3>Escolha sua Origem</h3>
+
+            <div class="opcoes-grid">
+
+                <div class="opcao-card-origem" onclick="selecionarOrigem('Acólito', this)">
+                    <h4>Acólito</h4>
+                    <p>Serviu a uma religião, templo ou ordem sagrada, dedicando a vida à fé e ao conhecimento divino.</p>
+                </div>
+
+                <div class="opcao-card-origem" onclick="selecionarOrigem('Artesão de Guilda', this)">
+                    <h4>Artesão de Guilda</h4>
+                    <p>Membro treinado de uma guilda profissional, especialista em um ofício valorizado pela sociedade.</p>
+                </div>
+
+                <div class="opcao-card-origem" onclick="selecionarOrigem('Artista', this)">
+                    <h4>Artista</h4>
+                    <p>Entreteve multidões através da música, teatro, dança ou outras formas de expressão.</p>
+                </div>
+
+                <div class="opcao-card-origem" onclick="selecionarOrigem('Charlatão', this)">
+                    <h4>Charlatão</h4>
+                    <p>Mestre da enganação, viveu de golpes, farsas e identidades falsas.</p>
+                </div>
+
+                <div class="opcao-card-origem" onclick="selecionarOrigem('Criminoso', this)">
+                    <h4>Criminoso</h4>
+                    <p>Sobreviveu através do crime, furtos, contrabando ou atividades ilegais.</p>
+                </div>
+
+                <div class="opcao-card-origem" onclick="selecionarOrigem('Eremita', this)">
+                    <h4>Eremita</h4>
+                    <p>Passou anos isolado do mundo em busca de sabedoria, paz ou respostas.</p>
+                </div>
+
+                <div class="opcao-card-origem" onclick="selecionarOrigem('Forasteiro', this)">
+                    <h4>Forasteiro</h4>
+                    <p>Acostumado à vida selvagem, longe das grandes cidades e da civilização.</p>
+                </div>
+
+                <div class="opcao-card-origem" onclick="selecionarOrigem('Herói do Povo', this)">
+                    <h4>Herói do Povo</h4>
+                    <p>Uma pessoa comum que realizou um feito marcante e ganhou a admiração do povo.</p>
+                </div>
+
+                <div class="opcao-card-origem" onclick="selecionarOrigem('Marinheiro', this)">
+                    <h4>Marinheiro</h4>
+                    <p>Viveu grande da vida navegando mares, rios e portos distantes.</p>
+                </div>
+
+                <div class="opcao-card-origem" onclick="selecionarOrigem('Nobre', this)">
+                    <h4>Nobre</h4>
+                    <p>Cresceu entre riquezas, influência política e privilégios sociais.</p>
+                </div>
+
+                <div class="opcao-card-origem" onclick="selecionarOrigem('Orfão', this)">
+                    <h4>Orfão</h4>
+                    <p>Cresceu sozinho nas ruas, aprendendo a sobreviver com inteligência e esperteza.</p>
+                </div>
+
+                <div class="opcao-card-origem" onclick="selecionarOrigem('Sábio', this)">
+                    <h4>Sábio</h4>
+                    <p>Dedicou a vida ao estudo, pesquisa e busca incessante por conhecimento.</p>
+                </div>
+
+                <div class="opcao-card-origem" onclick="selecionarOrigem('Soldado', this)">
+                    <h4>Soldado</h4>
+                    <p>Serviu em exércitos ou milícias, recebendo treinamento militar e disciplina rígida.</p>
+                </div>               
+
+            </div>
+
+            <!-- Campo escondido que salva no banco -->
+            <input type="hidden" name="origem" id="origemSelecionada" required>
+
+        </div>
+
+        <!-- ================= ETAPA 5 ================= -->
         <div class="etapa">
             <div class="secao-toques-finais">
                 <h3>Toques Finais</h3>
@@ -280,7 +497,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
 });
 
-/* ===== Função seleção de Raça ===== */
 function selecionarRaca(valor, elemento) {
 
     document.querySelectorAll(".opcao-card").forEach(card => {
@@ -289,6 +505,26 @@ function selecionarRaca(valor, elemento) {
 
     elemento.classList.add("ativa");
     document.getElementById("racaSelecionada").value = valor;
+}
+
+function selecionarClasse(valor, elemento) {
+
+    document.querySelectorAll(".opcao-card-classe").forEach(card => {
+        card.classList.remove("ativa");
+    });
+
+    elemento.classList.add("ativa");
+    document.getElementById("classeSelecionada").value = valor;
+}
+
+function selecionarOrigem(valor, elemento) {
+
+    document.querySelectorAll(".opcao-card-origem").forEach(card => {
+        card.classList.remove("ativa");
+    });
+
+    elemento.classList.add("ativa");
+    document.getElementById("origemSelecionada").value = valor;
 }
 
 </script>

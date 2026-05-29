@@ -390,7 +390,7 @@ textarea {
     margin-top: 20px;
 }
 
-.opcao-card {
+.opcao-card , .opcao-card-classe , .opcao-card-origem {
     background: #1c1c1c;
     border: 1px solid #2a2a2a;
     padding: 15px;
@@ -399,23 +399,23 @@ textarea {
     transition: 0.2s ease;
 }
 
-.opcao-card:hover {
+.opcao-card:hover , .opcao-card-classe:hover , .opcao-card-origem:hover {
     transform: translateY(-4px);
     border-color: #7c3aed;
 }
 
-.opcao-card h4 {
+.opcao-card h4 , .opcao-card-classe h4 , .opcao-card-origem h4 {
     margin: 0;
     color: white;
 }
 
-.opcao-card p {
+.opcao-card p , .opcao-card-classe p , .opcao-card-origem p {
     font-size: 13px;
     color: #aaa;
     margin-top: 6px;
 }
 
-.opcao-card.ativa {
+.opcao-card.ativa , .opcao-card-classe.ativa , .opcao-card-origem.ativa {
     border: 2px solid #7c3aed;
     background: #22143a;
 }
