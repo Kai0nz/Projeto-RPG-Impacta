@@ -38,7 +38,10 @@ def criar_tabela():
             objetivo TEXT,               -- 18
             imagem TEXT,                 -- 19
             inventario TEXT,             -- 20
-            habilidades TEXT             -- 21
+            habilidades TEXT,            -- 21
+            magias TEXT,                 -- 22
+            truques TEXT,                -- 23
+            pericias TEXT                -- 24
         )
     """)
     conn.commit()
@@ -46,16 +49,43 @@ def criar_tabela():
     conn.close()
 
 # Adicionei inventario e habilidades aqui para evitar erros de coluna
-def inserir_personagem(nome, jogador, raca, classe, origem, nivel, hp, forca, destreza, constituicao, inteligencia, sabedoria, carisma, ca, aparencia, personalidade, historico, objetivo, imagem):
+def inserir_personagem(nome, jogador, raca, classe, origem, nivel, hp, forca, destreza, constituicao, inteligencia, sabedoria, carisma, ca, aparencia, personalidade, historico, objetivo, imagem, magias, truques, pericias):
     conn = conectar()
     cursor = conn.cursor()
     cursor.execute("""
         INSERT INTO personagem (
-            nome, jogador, raca, classe, origem, nivel, hp, forca, destreza, constituicao, 
-            inteligencia, sabedoria, carisma, ca, aparencia, personalidade, historico, objetivo, imagem, inventario, habilidades
+            nome, jogador, raca, classe, origem, 
+            nivel, hp, 
+            forca, destreza, constituicao, 
+            inteligencia, sabedoria, carisma, 
+            ca, 
+            aparencia, personalidade, historico, objetivo, 
+            imagem, 
+            inventario, habilidades, magias, truques, pericias
         )
-        VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, '', '')
-    """, (nome, jogador, raca, classe, origem, nivel, hp, forca, destreza, constituicao, inteligencia, sabedoria, carisma, ca, aparencia, personalidade, historico, objetivo, imagem))
+        VALUES (
+            %s, %s, %s, %s, %s, 
+            %s, %s, 
+            %s, %s, %s, 
+            %s, %s, %s, 
+            %s, 
+            %s, %s, %s, %s, 
+            %s, 
+            %s, %s, %s, %s, %s
+        )
+    """, (nome, jogador, raca, classe, origem, 
+          nivel, hp, 
+          forca, destreza, constituicao, 
+          inteligencia, sabedoria, carisma, 
+          ca, 
+          aparencia, personalidade, historico, objetivo, 
+          imagem, 
+          "",           # inventario
+          "",           # habilidades
+          magias, 
+          truques, 
+          pericias
+    ))
     conn.commit()
     cursor.close()
     conn.close()
@@ -77,16 +107,17 @@ def buscar_personagem(id):
     return personagem
 
 # Esta função agora é completa, caso você precise salvar um formulário inteiro no futuro
-def atualizar_personagem(id, nome, classe, nivel, hp, forca, destreza, constituicao, inteligencia, sabedoria, carisma, ca, aparencia, personalidade, historico, objetivo, inventario, habilidades):
+def atualizar_personagem(id, nome, classe, nivel, hp, forca, destreza, constituicao, inteligencia, sabedoria, carisma, ca, aparencia, personalidade, historico, objetivo, inventario, habilidades, magias, truques, pericias):
     conn = conectar()
     cursor = conn.cursor()
     cursor.execute("""
         UPDATE personagem
         SET nome = %s, classe = %s, nivel = %s, hp = %s, forca = %s, destreza = %s, 
             constituicao = %s, inteligencia = %s, sabedoria = %s, carisma = %s, ca = %s,
-            aparencia = %s, personalidade = %s, historico = %s, objetivo = %s, inventario = %s, habilidades = %s
+            aparencia = %s, personalidade = %s, historico = %s, objetivo = %s, inventario = %s, 
+            habilidades = %s, magias = %s, truques = %s, pericias = %s
         WHERE id = %s
-    """, (nome, classe, nivel, hp, forca, destreza, constituicao, inteligencia, sabedoria, carisma, ca, aparencia, personalidade, historico, objetivo, inventario, habilidades, id))
+    """, (nome, classe, nivel, hp, forca, destreza, constituicao, inteligencia, sabedoria, carisma, ca, aparencia, personalidade, historico, objetivo, inventario, habilidades, magias, truques, pericias, id))
     conn.commit()
     cursor.close()
     conn.close()

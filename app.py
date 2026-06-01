@@ -46,7 +46,11 @@ def adicionar():
         10,  # CA padrão
         
         aparencia, personalidade, historico, objetivo,
-        ""  # imagem vazia inicial
+        "",  # imagem vazia inicial
+
+        "",  # magias
+        "",  # truques
+        "",  # pericias
     )
     return redirect("/")
 
@@ -94,7 +98,8 @@ def editar_campo():
     campos_permitidos = [
         "nome", "jogador", "raca", "classe", "origem", "nivel", "hp",
         "forca", "destreza", "constituicao", "inteligencia", "sabedoria", "carisma",
-        "ca", "aparencia", "personalidade", "historico", "objetivo", "inventario", "habilidades"
+        "ca", "aparencia", "personalidade", "historico", "objetivo", "inventario", 
+        "habilidades", "magias", "truques", "pericias"
     ]
 
     if campo not in campos_permitidos:

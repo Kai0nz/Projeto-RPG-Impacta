@@ -121,6 +121,31 @@
 
         </div>
 
+        <div class="card atributos-card">
+            <h3>Pericias</h3>
+            
+            <div class="pericia-item">
+                <label>
+                    <input type="checkbox">
+                    Acrobacia
+                </label>
+
+                <input type="number" value="0" class="pericia-valor">
+
+            </div>
+
+            <div class="pericia-item">
+                <label>
+                    <input type="checkbox">
+                    Acrobacia
+                </label>
+
+                <input type="number" value="0" class="pericia-valor">
+
+            </div>
+
+        </div>
+
     </div>
 
 
@@ -152,6 +177,16 @@
             </div>
         </div>
 
+        <div class="card">
+            <h3>Inventário</h3>
+            <p contenteditable="true" class="editavel" 
+                data-campo="inventario" 
+                data-id="{{ personagem[0] }}">
+                {{ personagem[20] if personagem[20] else 'Vazio...' }}
+            </p>
+        </div>
+
+
         <div class="card descricao">
             <h3>Descrição</h3>
             <p contenteditable="true" class="editavel" 
@@ -168,22 +203,29 @@
     <div class="coluna direita">
 
         <div class="card">
-            <h3>Inventário</h3>
-
-            <p contenteditable="true" class="editavel" 
-                data-campo="inventario" 
-                data-id="{{ personagem[0] }}">
-                {{ personagem[20] if personagem[20] else 'Vazio...' }}
-            </p>
-
-        </div>
-
-        <div class="card">
             <h3>Habilidades</h3>
             <p contenteditable="true" class="editavel" 
                 data-campo="habilidades" 
                 data-id="{{ personagem[0] }}">
                 {{ personagem[21] if personagem[21] else 'Nenhuma habilidade...' }}
+            </p>
+        </div>
+
+         <div class="card">
+            <h3>Magias</h3>
+            <p contenteditable="true" class="editavel" 
+                data-campo="magias" 
+                data-id="{{ personagem[0] }}">
+                {{ personagem[22] if personagem[22] else 'Nenhuma magia...' }}
+            </p>
+        </div>
+
+         <div class="card">
+            <h3>Truques</h3>
+            <p contenteditable="true" class="editavel" 
+                data-campo="truques" 
+                data-id="{{ personagem[0] }}">
+                {{ personagem[23] if personagem[23] else 'Nenhum truque...' }}
             </p>
         </div>
 

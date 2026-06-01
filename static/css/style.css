@@ -758,3 +758,20 @@ textarea {
     padding: 8px;
     border-radius: 6px;
 }
+
+/* ========================================= */
+/* ========= GRID DOS ATRIBUTOS ============ */
+/* ========================================= */
+
+.pericia-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid #444;
+}
+
+.pericia-valor {
+    width: 60px;
+    text-align: center;
+}
