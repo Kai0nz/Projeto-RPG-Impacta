@@ -125,25 +125,45 @@
             <h3>Pericias</h3>
             
             <div class="pericia-item">
-                <label>
-                    <input type="checkbox">
+                <input type="checkbox" class="pericia-check" data-pericia="Acrobacia" data-id="{{ personagem[0] }}" {% if personagem[24] and 'Acrobacia' in personagem[24] %} checked {% endif %}>
+                <span class="pericia-nome">
                     Acrobacia
-                </label>
+                </span>
+                <input type="number" value="0">
+            </div>
 
-                <input type="number" value="0" class="pericia-valor">
-
+             <div class="pericia-item">
+                <input type="checkbox" class="pericia-check" data-pericia="Arcanismo" data-id="{{ personagem[0] }}" {% if personagem[24] and 'Arcanismo' in personagem[24] %} checked {% endif %}>
+                <span class="pericia-nome">
+                    Arcanismo
+                </span>
+                <input type="number" value="0">
             </div>
 
             <div class="pericia-item">
-                <label>
-                    <input type="checkbox">
-                    Acrobacia
-                </label>
-
-                <input type="number" value="0" class="pericia-valor">
-
+                <input type="checkbox" class="pericia-check" data-pericia="Atletismo" data-id="{{ personagem[0] }}" {% if personagem[24] and 'Atletismo' in personagem[24] %} checked {% endif %}>
+                <span class="pericia-nome">
+                    Atletismo
+                </span>
+                <input type="number" value="0">
             </div>
 
+            <div class="pericia-item">
+                <input type="checkbox" class="pericia-check" data-pericia="Furtividade" data-id="{{ personagem[0] }}" {% if personagem[24] and 'Furtividade' in personagem[24] %} checked {% endif %}>
+                <span class="pericia-nome">
+                    Furtividade
+                </span>
+                <input type="number" value="0">
+            </div>
+
+            <div class="pericia-item">
+                <input type="checkbox" class="pericia-check" data-pericia="Percepção" data-id="{{ personagem[0] }}" {% if personagem[24] and 'Percepção' in personagem[24] %} checked {% endif %}>
+                <span class="pericia-nome">
+                    Percepção
+                </span>
+                <input type="number" value="0">
+            </div>
+           
         </div>
 
     </div>
@@ -305,6 +325,48 @@ document.querySelectorAll(".editavel").forEach(campo => {
             this.blur(); // Salva ao apertar Enter
         }
     });
+});
+
+</script>
+
+<script>
+
+// Salva as informações dos checkboxes
+console.log("Script das perícias carregado!");
+
+document.querySelectorAll(".pericia-check").forEach(check => {
+
+    check.addEventListener("change", function() {
+
+        const id = this.dataset.id;
+
+        let lista = [];
+
+        document.querySelectorAll(".pericia-check:checked").forEach(item => {
+            lista.push(item.dataset.pericia);
+        });
+
+        fetch("/editar_campo", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                id: id,
+                campo: "pericias",
+                valor: JSON.stringify(lista)
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log("Resposta do servidor:", data);
+        })
+        .catch(error => {
+            console.error("Erro:", error);
+        });
+
+    });
+
 });
 
 </script>

@@ -765,13 +765,19 @@ textarea {
 
 .pericia-item {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+
     padding: 8px 0;
-    border-bottom: 1px solid #444;
+    border-bottom: 1px solid #333;
 }
 
-.pericia-valor {
-    width: 60px;
-    text-align: center;
+.pericia-nome {
+    flex: 1; /* ocupa o espaço disponível */
+    margin: 10px;
+}
+
+.pericia-item input [type="number"] {
+    width: 50px;
 }

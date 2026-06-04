@@ -57,6 +57,7 @@ def adicionar():
 @app.route("/personagem/<int:id>")
 def detalhes(id):
     personagem = buscar_personagem(id)
+    print("PERICIAS:", personagem[24])
     return render_template("detalhes.html", personagem=personagem)
 
 @app.route("/upload_foto/<int:id>", methods=["POST"])
@@ -122,3 +123,4 @@ def editar_campo():
 # O app.run deve ser sempre a última coisa do arquivo
 if __name__ == "__main__":
     app.run(debug=True)
+
